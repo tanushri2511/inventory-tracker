@@ -1,4 +1,5 @@
-# inventory-tracker
+Intern ID: CITS3306 Name: Tanushri V
+Project: Inventory-tracker (SQL)
 
 SQL-based inventory tracking application with Express, React, and MySQL.
 
