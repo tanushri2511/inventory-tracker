@@ -1,32 +1,31 @@
 # inventory-tracker
 
-SQL-based inventory tracking application with Express + React + MySQL  
-A full-stack inventory management system built with Node.js, Express, React (Vite), and MySQL. This project helps you track products, manage stock levels, and generate inventory reports.
+SQL-based inventory tracking application with Express, React, and MySQL.
+
+This project is a full-stack inventory management system designed to manage products, track stock quantities, and view inventory-related data through a web interface. It uses a React frontend, an Express backend, and MySQL as the database.
 
 ---
 
 ## Features
 
-- **Add, edit, and delete products** with full CRUD functionality
-- **Real-time stock tracking** with automatic quantity updates
-- **Inventory reports**:
-  - Summary report (total items, total value)
-  - Low-stock items report
-- **Database-driven storage** using MySQL via WAMP server
-- **Clean and responsive UI** built with React and Vite
-- **Separate frontend and backend** for scalable architecture
+- Add new products to inventory
+- View all products in a structured interface
+- Update product details and stock quantity
+- Delete products when needed
+- Track inventory records using MySQL
+- Connect frontend and backend using REST APIs
 
 ---
 
 ## Tech Stack
 
-| Layer       | Technology               |
-|------------|--------------------------|
-| Frontend    | React + Vite             |
-| Backend     | Node.js + Express        |
-| Database    | MySQL (via WAMP)         |
-| API         | RESTful JSON API         |
-| Styling     | CSS                      |
+| Layer | Technology |
+|-------|------------|
+| Frontend | React + Vite |
+| Backend | Node.js + Express |
+| Database | MySQL |
+| Styling | CSS |
+| Tools | WAMP, Git, GitHub |
 
 ---
 
@@ -34,24 +33,26 @@ A full-stack inventory management system built with Node.js, Express, React (Vit
 
 ```text
 inventory-tracker/
+├── backend/
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   ├── config/
+│   ├── server.js
+│   ├── package.json
+│   └── package-lock.json
+│
 ├── frontend/
 │   ├── public/
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   ├── App.jsx
-│   │   └── main.jsx
+│   │   ├── main.jsx
+│   │   └── api.js
 │   ├── package.json
-│   ├── vite.config.js
-│   └── .gitignore
-│
-├── backend/
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   ├── server.js
-│   ├── package.json
-│   └── .gitignore
+│   ├── package-lock.json
+│   └── vite.config.js
 │
 ├── database/
 │   ├── schema.sql
@@ -63,170 +64,139 @@ inventory-tracker/
 
 ---
 
-## Installation
+## Prerequisites
 
-### Prerequisites
+Before running this project, make sure the following are installed on your system:
 
-- **WAMP Server** (with MySQL installed)
-- **Node.js** (v16 or higher)
-- **npm** (comes with Node.js)
-- **Git**
+- Node.js
+- npm
+- WAMP or any MySQL server setup
+- Git
+- A code editor such as Visual Studio Code
 
-### Step 1: Set Up MySQL Database
+---
 
-1. Open **WAMP Server** and ensure **MySQL** is running.
-2. Open **phpMyAdmin** (usually at `http://localhost/phpmyadmin`).
-3. Create a new database named:
+## Database Setup
 
-   ```sql
-   CREATE DATABASE inventory_tracker;
-   ```
+1. Start WAMP and make sure MySQL is running.
+2. Open phpMyAdmin.
+3. Create a database named `inventory_tracker`.
+4. Import or run the SQL file used for table creation.
+5. If sample data is available, run the seed file.
 
-4. Run the database schema:
+---
 
-   - Open `database/schema.sql` in MySQL or phpMyAdmin.
-   - Execute the SQL to create tables (`products`, etc.).
+## Backend Setup
 
-5. (Optional) Load sample data:
-
-   - Execute `database/seed.sql` to insert demo products.
-
-### Step 2: Backend Setup
-
-1. Navigate to the backend folder:
+1. Open the terminal in the `backend` folder.
 
    ```bash
    cd backend
    ```
 
-2. Install dependencies:
+2. Install backend dependencies.
 
    ```bash
    npm install
    ```
 
-3. Create a `.env` file in the backend folder with the following content:
+3. Configure your local database connection settings as required by the project.
 
-   ```env
-   PORT=5000
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=
-   DB_NAME=inventory_tracker
-   ```
-
-   Adjust `DB_PASSWORD` if your MySQL has a password set.
-
-4. Start the backend server:
+4. Start the backend server.
 
    ```bash
    npm start
    ```
 
-   The API will run at `http://localhost:5000`.
+The backend server will run on the configured local port.
 
-Available API endpoints (example):
+---
 
-- `GET /api/products` – Get all products
-- `POST /api/products` – Add a new product
-- `PUT /api/products/:id` – Update a product
-- `DELETE /api/products/:id` – Delete a product
-- `GET /api/reports/summary` – Get inventory summary
-- `GET /api/reports/low-stock` – Get low-stock items
+## Frontend Setup
 
-### Step 3: Frontend Setup
-
-1. Navigate to the frontend folder:
+1. Open the terminal in the `frontend` folder.
 
    ```bash
    cd frontend
    ```
 
-2. Install dependencies:
+2. Install frontend dependencies.
 
    ```bash
    npm install
    ```
 
-3. Start the React development server:
+3. Start the frontend development server.
 
    ```bash
    npm run dev
    ```
 
-   The app will open at `http://localhost:5173` (Vite default).
-
-4. In the frontend, configure the API URL to point to your backend:
-
-   - In `src/api.js` or relevant config, set:
-
-     ```js
-     const API_URL = 'http://localhost:5000';
-     ```
+The frontend will open in the browser using the local development URL provided by Vite.
 
 ---
 
-## Usage
+## How to Run the Project
 
-1. Ensure **MySQL is running** via WAMP.
-2. Start the **backend** (`npm start` in `backend/`).
-3. Start the **frontend** (`npm run dev` in `frontend/`).
-4. Open the frontend URL in your browser.
-5. Use the UI to:
-   - Add new products
-   - Update stock quantities
-   - View inventory reports
+1. Start MySQL using WAMP.
+2. Make sure the database is created and tables are imported.
+3. Run the backend server.
+4. Run the frontend server.
+5. Open the frontend in the browser.
+6. Test adding, viewing, editing, and deleting inventory items.
 
 ---
 
-## Screenshots
+## API Overview
 
-_(Add screenshots of your app here once you have them.)_
+Some common backend routes used in the project may include:
 
-Example:
+- `GET /api/products`
+- `POST /api/products`
+- `PUT /api/products/:id`
+- `DELETE /api/products/:id`
 
-```text
-[screenshot of product list]
-[screenshot of add product form]
-[screenshot of low-stock report]
-```
-
----
-
-## Environment Variables
-
-Create a `.env` file in the `backend` folder:
-
-```env
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=inventory_tracker
-```
-
-**Do not commit `.env` to GitHub.** It is already ignored by `.gitignore`.
+These routes handle communication between the frontend and the database through the backend.
 
 ---
 
-## License
+## GitHub Notes
 
-This project is open source and available for educational and personal use.
+This project is uploaded to GitHub for version control and project sharing.
+
+Files included in the repository:
+- Source code
+- Configuration files
+- SQL files
+- README
+- `.gitignore`
+
+Files excluded from the repository:
+- `node_modules`
+- local environment files
+- log files
+- build folders
+
+---
+
+## Future Improvements
+
+- Add authentication for admin access
+- Add dashboard analytics
+- Add low-stock alerts
+- Export reports to Excel or CSV
+- Improve mobile responsiveness
 
 ---
 
 ## Author
 
-**Tanu Shri (tanushri2511)**  
-Location: Chennai, Tamil Nadu, India  
-Project: Inventory Tracker – SQL + Express + React
+**Tanu Shri**
+
+GitHub: [tanushri2511](https://github.com/tanushri2511)
 
 ---
 
-## Future Enhancements
+## License
 
-- User authentication and role-based access
-- Barcode scanning for products
-- Export reports to CSV/Excel
-- More detailed analytics and charts
-- Mobile-friendly responsive design
+This project is for learning and academic/project demonstration purposes.
